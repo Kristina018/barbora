@@ -3,7 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 
 # from models.barbora_item import BarboraItem
-# from scrapers.barbora_scrapper import BarboraScrapper
+from scrapers.barbora_scraper import BarboraScrapper
 
 
 def initGathering():
