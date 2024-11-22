@@ -5,7 +5,7 @@ class DB():
 
     def __init__(self):
         self.connectDB()
-
+#github
     def connectDB(self):
            self.conn = mysql.connector.connect(
                host = "127.0.0.1",  # localhost
