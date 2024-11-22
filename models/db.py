@@ -1,6 +1,5 @@
 import mysql.connector
 
-
 class DB():
 
     def __init__(self):
@@ -11,7 +10,7 @@ class DB():
                host = "127.0.0.1",  # localhost
                user = 'root',
                password = '',  # rašot savo
-               database = "prekes"  # rašot savo
+               database = "barbora"  # rašot savo
            )
 
     def close(self):

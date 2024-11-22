@@ -3,10 +3,11 @@ from selenium.webdriver.common.by import By
 from models.barbora_item import BarboraItem
 
 
-class BarboraScrapper():
-    def __init__(self, driver, url):
+class BarboraScraper():
+    def __init__(self, driver, url, hrefs):
         self.driver = driver
         self.url = url
+        self.hrefs = hrefs
 
 
     def collectData(self):
