@@ -1,10 +1,11 @@
 from models.db import DB
 from page_objects.barbora_item_page import BarboraItemPage
 
-
-class BarboraItem():
+class BarboraItem:
 
     def __init__(self, driver):
+        self.title = None
+        self.size = None
         self.driver = driver
 
     def save(self):
