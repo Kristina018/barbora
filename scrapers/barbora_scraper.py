@@ -1,46 +1,60 @@
+from driver import driver
+from selenium import webdriver
 from selenium.webdriver.common.by import By
-
 from models.barbora_item import BarboraItem
+import time
 
 
-class BarboraScraper():
-    def __init__(self, driver, url, hrefs):
+class BarboraScraper:
+    def __init__(self, driver, url):
+        self.hrefs = []
         self.driver = driver
         self.url = url
-        self.hrefs = hrefs
 
+    def accept_cookies(self):
+        self.driver.get("https://barbora.lt")
+        self.driver.find_element(By.ID, 'CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll').click()
 
-    def collectData(self):
-        self.acceptCookies()
-        self.ageConsent()
-        self.getUrls()
-        self.collectEach()
+    def collect_data(self):
+        self.accept_cookies()
+        time.sleep(5)
 
-    def getUrls(self):
-        for i in range(1, 10):
+        # bakaleja
+        self.driver.find_element(By.XPATH, '/html/body/div[3]/div/div[3]/div/div[1]/div/div/ul/li[5]/div/a').click()
+        time.sleep(5)
+
+        # grikiai
+        self.driver.find_element(By.XPATH, '/html/body/div[2]/div/div[3]/div/div[3]/div[2]/div/div/div/div[1]/div[2]/ul/li[3]/div/a').click()
+
+    # self.age_consent()
+        self.get_urls()
+        self.collect_each()
+
+    def get_urls(self):
+        for i in range(1, 2):
             self.driver.get(f"{self.url}?page={i}")
             ul = self.driver.find_element(By.XPATH, '//*[@id="category-page-results-placeholder"]/div/ul')
             lis = ul.find_elements(By.TAG_NAME, 'li')
-            print(len(lis))
+            # print(f"Tiek pas mus grikiu {i}-ame puslapyje: {len(lis)}:")
             if len(lis) == 0:
                 break
             for a in lis:
                 href = a.find_element(By.TAG_NAME, 'a').get_attribute('href')
                 self.hrefs.append(href)
+                # print(href)
 
-    def collectEach(self):
+    def collect_each(self):
         for link in self.hrefs:
             self.driver.get(link)
             item = BarboraItem(self.driver)
             item.fill()
             item.save()
 
-    def acceptCookies(driver):
-        driver.get("https://barbora.lt")
-        driver.find_element(By.ID, 'CybotCookiebotDialogBodyLevelButtonLevelOptinDeclineAll').click()
-
-    def ageConsent(self):
+    def age_consent(self):
         self.driver.get(self.url)
         is_20 = len(self.driver.find_elements(By.ID, 'fti-modal-option-1')) != 0
         if is_20:
             self.driver.find_element(By.ID, "fti-modal-option-1").click()
+
+    def get(self, param):
+        pass
