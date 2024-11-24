@@ -6,7 +6,7 @@ driver.get("https://barbora.lt/produktai/grikiai-well-done-800-g")
 driver.find_element(By.XPATH, '//*[@id="CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll"]').click()
 
 # a = driver.find_elements(By.XPATH, "/html/body/div[2]/div/div[3]/div/div[3]/div/div[2]/div[1]/div/div[2]/div[4]/div[1]/div/meta[1]")
-# print(driver.title)
+print(driver.title)
 # print(a)
 
 # # bandau kaina - printina stulpeliu
