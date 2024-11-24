@@ -19,9 +19,13 @@ driver.get("https://barbora.lt/produktai/grikiai-well-done-800-g")
 # print(texts, sep="\n")
 # print(texts, sep="\n\n ") # spaudina paskutini dalyka (kartais)
 
-a = driver.find_element(By.CLASS_NAME, "tw-pb-1").text
-# print(a[0])
-print(a)
-# print(type(a))
-# type(a)
+# # VEIKIA PUSIAU
+# a = driver.find_element(By.CLASS_NAME, "tw-pb-1").text
+# # print(a[0])
+# print(a)
+# # print(type(a))
+# # type(a)
+
+
+
 driver.close()
