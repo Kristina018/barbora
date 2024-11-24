@@ -25,7 +25,7 @@ print(driver.title)
 # print(a)
 # # print(type(a))
 # # type(a)
-
+###
 print(driver.find_element(By.CLASS_NAME, "md:tw-leading-6").text)
 
 # driver.close()
