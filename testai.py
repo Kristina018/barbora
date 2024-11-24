@@ -3,7 +3,7 @@ from selenium import webdriver
 driver = webdriver.Firefox()
 
 driver.get("https://barbora.lt/produktai/grikiai-well-done-800-g")
-driver.find_element(By.XPATH, '//*[@id="CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll"]').click()
+# driver.find_element(By.XPATH, '//*[@id="CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll"]').click()
 
 # a = driver.find_elements(By.XPATH, "/html/body/div[2]/div/div[3]/div/div[3]/div/div[2]/div[1]/div/div[2]/div[4]/div[1]/div/meta[1]")
 print(driver.title)
@@ -26,6 +26,6 @@ print(driver.title)
 # # print(type(a))
 # # type(a)
 
+print(driver.find_element(By.CLASS_NAME, "md:tw-leading-6").text)
 
-
-driver.close()
+# driver.close()
